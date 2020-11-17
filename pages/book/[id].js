@@ -6,7 +6,7 @@ export default function Book({ data, addToCart }) {
     const [book, setBook] = useState(data)
     useEffect(async () => {
         if (!data) {
-            const res = await fetch(`http://localhost:3000/api/book/${router.query.id}`)
+            const res = await fetch(`/api/book/${router.query.id}`)
             const data = await res.json()
             setBook(data)
         }
@@ -36,7 +36,7 @@ Book.getInitialProps = async ({ req, query }) => {
         return { props: { data: null } }
     }
 
-    const res = await fetch(`http://localhost:3000/api/book/${query.id}`)
+    const res = await fetch(`${process.env.SERVER}/api/book/${query.id}`)
     console.log(req)
     const data = await res.json()
     return { data }

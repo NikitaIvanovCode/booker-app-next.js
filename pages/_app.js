@@ -4,7 +4,7 @@ import '../style/style.css'
 
 export default function App({ Component, pageProps }) {
     const addToCart = async book => {
-        const res = await fetch('http://localhost:3000/api', {
+        const res = await fetch(`/api`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(book)

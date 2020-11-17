@@ -5,7 +5,7 @@ export default function Index({ data, addToCart }) {
     const [booksData, setBooksData] = useState(data)
     useEffect(async () => {
         if (!data) {
-            const res = await fetch('http://localhost:3000/api')
+            const res = await fetch('/api')
             const data = await res.json()
             setBooksData(data)
         }
@@ -48,7 +48,7 @@ Index.getInitialProps = async ({ req }) => {
     if (!req) {
         return { data: null }
     }
-    const res = await fetch('http://localhost:3000/api')
+    const res = await fetch(`${process.env.SERVER}/api`)
     const data = await res.json()
     return { data }
 }
