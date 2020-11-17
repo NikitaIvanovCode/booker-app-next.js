@@ -9,7 +9,7 @@ export default function Navbar({ isAuth, isAdmin }) {
 
     useEffect(async () => {
         if (!isAuth) {
-            const res = await fetch(`${process.env.SERVER}/api/auth`)
+            const res = await fetch(`/api/auth`)
             if (res.status === 200) {
                 const data = await res.json()
                 if (data.isAdmin === 'admin') {
@@ -23,7 +23,7 @@ export default function Navbar({ isAuth, isAdmin }) {
     })
 
     const logout = async () => {
-        const res = await fetch(`${process.env.SERVER}/api/logout`)
+        const res = await fetch(`/api/logout`)
         if (res.status === 200) {
             setAuth(null)
             setAdmin(null)
