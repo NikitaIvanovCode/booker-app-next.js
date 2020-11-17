@@ -6,7 +6,7 @@ export default function Book({ data, addToCart }) {
     const [book, setBook] = useState(data)
     useEffect(async () => {
         if (!data) {
-            const res = await fetch(`/api/book/${router.query.id}`)
+            const res = await fetch(`${process.env.SERVER}/api/book/${router.query.id}`)
             const data = await res.json()
             setBook(data)
         }

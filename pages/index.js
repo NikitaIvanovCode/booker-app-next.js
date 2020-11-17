@@ -5,7 +5,7 @@ export default function Index({ data, addToCart }) {
     const [booksData, setBooksData] = useState(data)
     useEffect(async () => {
         if (!data) {
-            const res = await fetch('/api')
+            const res = await fetch(`${process.env.SERVER}/api`)
             const data = await res.json()
             setBooksData(data)
         }

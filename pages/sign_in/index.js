@@ -12,7 +12,7 @@ export default function Login() {
             email: e.target.email.value,
             password: e.target.password.value
         }
-        const res = await fetch(`/api/login`, {
+        const res = await fetch(`${process.env.SERVER}/api/login`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(user)

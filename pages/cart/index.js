@@ -18,7 +18,7 @@ export default function Cart({ data }) {
 
     useEffect(async () => {
         if (data === undefined) {
-            const res = await fetch(`/api/cart`)
+            const res = await fetch(`${process.env.SERVER}/api/cart`)
             if (res.status === 204) {
                 setLoading(false)
                 return isCartLS()
@@ -49,7 +49,7 @@ export default function Cart({ data }) {
         const value = e.target.value
         const bookId = e.target.dataset.id
 
-        const res = await fetch(`/api/cart`, {
+        const res = await fetch(`${process.env.SERVER}/api/cart`, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ id: bookId, value })
@@ -74,7 +74,7 @@ export default function Cart({ data }) {
     }
 
     const removeBtnHandler = async bookId => {
-        const res = await fetch(`/api/cart`, {
+        const res = await fetch(`${process.env.SERVER}/api/cart`, {
             method: 'DELETE',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(bookId)

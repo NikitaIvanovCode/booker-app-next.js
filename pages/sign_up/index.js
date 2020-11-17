@@ -13,7 +13,7 @@ export default function Login() {
             password: e.target.password.value,
             confirm_password: e.target.confirmPassword.value
         }
-        const res = await fetch(`/api/registration`, {
+        const res = await fetch(`${process.env.SERVER}/api/registration`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(user)

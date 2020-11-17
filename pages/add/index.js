@@ -7,7 +7,7 @@ export default function Add({ data }) {
 
     useEffect(async () => {
         if (data === null) {
-            const res = await fetch(`${process.env.HOST}/api/auth`)
+            const res = await fetch(`${process.env.SERVER}/api/auth`)
             const data = await res.json()
             if (data.isAdmin === 'admin') {
                 return setAdmin(true)
@@ -27,7 +27,7 @@ export default function Add({ data }) {
             img: e.target.img.value,
             description: e.target.description.value
         }
-        fetch(`/api/add`, {
+        fetch(`${process.env.SERVER}/api/add`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(book)
