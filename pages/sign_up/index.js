@@ -39,7 +39,7 @@ export default function Login() {
                 <div>
                     <input type="password" placeholder="повторите пароль" name="confirmPassword" />
                 </div>
-                <div>{message}</div>
+                <div className="log-error">{message}</div>
                 <div>
                     <Link href="/sign_in">
                         <a>войти</a>

@@ -17,7 +17,7 @@ export default function Cart({ data }) {
     }
 
     useEffect(async () => {
-        if (data === undefined) {
+        if (data === 'no_req') {
             const res = await fetch(`/api/cart`)
             if (res.status === 204) {
                 setLoading(false)
@@ -129,7 +129,7 @@ export default function Cart({ data }) {
 
 Cart.getInitialProps = async ({ req }) => {
     if (!req) {
-        return { data: undefined }
+        return { data: 'no_req' }
     }
 
     const cookie = req.headers.cookie
@@ -137,6 +137,7 @@ Cart.getInitialProps = async ({ req }) => {
         const res = await fetch(`${process.env.SERVER}/api/cart`, {
             headers: { cookie }
         })
+
         const data = await res.json()
         return { data }
     } else {

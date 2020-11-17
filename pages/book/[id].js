@@ -37,7 +37,6 @@ Book.getInitialProps = async ({ req, query }) => {
     }
 
     const res = await fetch(`${process.env.SERVER}/api/book/${query.id}`)
-    console.log(req)
     const data = await res.json()
     return { data }
 }

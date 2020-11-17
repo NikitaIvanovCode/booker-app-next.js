@@ -14,9 +14,9 @@ export default async (req, res) => {
     switch (req.method) {
         case 'GET':
             try {
-                res.status(200).json(user.cart)
+                return res.status(200).json(user.cart)
             } catch {
-                res.status(400).json({ message: 'Что-то пошло не так.' })
+                return res.status(400).json({ message: 'Что-то пошло не так.' })
             }
         case 'PUT':
             try {
@@ -24,22 +24,21 @@ export default async (req, res) => {
                 const idx = user.cart.findIndex(({ id }) => id === bookId)
                 user.cart[idx].count = value
                 await user.save()
-                res.status(200).json(user.cart)
+                return res.status(200).json(user.cart)
             } catch {
-                res.status(400).json({ message: 'Что-то пошло не так.' })
+                return res.status(400).json({ message: 'Что-то пошло не так.' })
             }
         case 'DELETE':
             try {
                 const bookId = req.body
-                console.log(bookId)
                 const cart = await user.cart.filter(({ id }) => id !== bookId)
                 user.cart = cart
                 await user.save()
-                res.status(200).json(cart)
+                return res.status(200).json(cart)
             } catch {
-                res.status(400).json({ message: 'Что-то пошло не так.' })
+                return res.status(400).json({ message: 'Что-то пошло не так.' })
             }
         default:
-            res.status(400).json({ message: 'Что-то пошло не так.' })
+            return res.status(400).json({ message: 'Что-то пошло не так.' })
     }
 }
